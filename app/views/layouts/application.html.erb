@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+  <html>
+      <head>
+        <title>Triprecord</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'  %>
+      </head>
+
+      <body>
+        <header class="navbar navbar-fixed-top navbar-light mb-2" style="background-color:#1995AD">
+          <div class="container">
+            <nav class="nav navbar-nav navbar-left">
+              <span class="title"><%= link_to 'Triprecord', root_path ,:style=>"color:white;"%></span>
+            </nav>
+            <nav>
+              <ul class="nav navbar-nav navbar-right ">
+                <% if user_signed_in? %>
+                  <li>
+                    <%= link_to "探す" , search_posts_path, class: "glyphicon glyphicon-search", :style=>"color:white;" %>
+                  </li>
+                  <li>
+                     <%= link_to "投稿 " , new_post_path , class: "glyphicon glyphicon-pencil", :style=>"color:white;"%>
+                  </li>
+                  <li>
+                    <%= link_to "マイページ" , user_path(current_user.id), class: "glyphicon glyphicon-user",:style=>"color:white;" %>
+                  </li>
+                  <li>
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete , class: "glyphicon glyphicon-log-out" , :style=>"color:white;"%>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to " TOPページ", root_path, class: "glyphicon glyphicon-home"  ,:style=>"color:white;" %>
+                  </li>
+                  <li>
+                    <%= link_to " 新規登録",new_user_registration_path , class: "glyphicon glyphicon-edit", :style=>"color:white;" %>
+                  </li>
+                  <li>
+                    <%= link_to " ログイン",new_user_session_path, class: "glyphicon glyphicon-log-in" ,:style=>"color:white;"%>
+                  </li>
+                <% end %>
+              </ul>
+            </nav>
+          </div>
+        </header>
+
+        <%= yield %>
+
+      </body>
+  </html>
+

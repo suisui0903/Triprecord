@@ -1,0 +1,38 @@
+	<div class="container">
+	  <div class="row">
+	  	<div class="col-md-6 col-md-offset-2">
+
+			<h1><span class="bg-info">新規投稿</span></h1>
+		<!--投稿失敗メッセージ-->
+	  		<% if @post.errors.any? %>
+			  <div id="error_explanation" class="alert alert-danger">
+			    <ul>
+			      <li>error</li>
+			      <% @post.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			    </ul>
+			  </div>
+			<% end %>
+		<!--投稿失敗メッセージここまで-->
+			<%= form_for(@post) do |f| %>
+
+			  <h4>タイトル</h4>
+			  <%= f.text_field :title, :size=>"60"%>
+
+			  <h4><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>場所</h4>
+			  <%= f.text_field :place, :size=>"60"%>
+
+			  <h4>本文</h4>
+			  <%= f.text_area :caption,:size=>"60x10" %>
+
+			  <h4>画像（横長画像のみ対応）</h4>
+			  <%= f.file_field :image, class: "image" %>
+
+
+			  <%= f.submit '投稿' ,class: 'btn btn-info col-md-3'%>
+
+			<% end %>
+		</div>
+	  </div>
+	</div>

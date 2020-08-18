@@ -1,0 +1,30 @@
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+
+				<h1><span class="bg-info">投稿編集画面</span></h1>
+					<%= form_for(@posts) do |f| %>
+					<h4>タイトル</h4>
+					    <%= f.text_field :title,:size=>"60" %>
+					   <h4> 場所</h4>
+					    <%= f.text_field :place,:size=>"60" %>
+					    <h4>本文</h4>
+					    <%= f.text_area :caption, :size=>"60x10"%>
+					    <%= f.submit '更新する',class: 'btn btn-info col-md-10' %>
+					<% end %>
+
+				<div class="btn-flat-border">
+			       	<%= link_to "前の画面に戻る", post_path ,class: "btn btn-outline-info" %>
+				</div>
+
+				<div class="btn-flat-border">
+					<% if @posts.user == current_user %>
+	              		<%= link_to "削除", post_path, method: :delete ,class: "btn btn-outline-info"%>
+	            	<% end %>
+            	</div>
+
+			</div>
+		</div>
+	</div>
+
+

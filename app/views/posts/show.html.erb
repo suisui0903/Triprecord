@@ -1,0 +1,58 @@
+
+  <div class="container">
+
+	<div class="row">
+	  <div class="col-md-7">
+	  	<%= flash[:notice] %>
+		<h1><%= @posts.title %></h1>
+		<h2>
+		  <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+		  <%= @posts.place %>
+		</h2>
+	  </div>
+	  <div class="col-md-4">
+		<span class="glyphicon glyphicon-time" aria-hidden="true">
+			<%= @posts.created_at.strftime('%Y/%m/%d') %>
+		</span>
+	  </div>
+	</div>
+
+	<div class="row">
+	   <div class="col-md-7">
+		  <%= attachment_image_tag @posts, :image, :fill, 600, 400%>
+	   </div>
+	   <div class="col-md-4 col-md-offset-1">
+		  <h3><%= @posts.caption %></h3>
+			<!--favorit機能 -->
+		  <div class="bottom">
+			<% if @posts.favorited_by?(current_user) %>
+	            <li style="list-style:none">
+	               <%= link_to post_favorite_path(@posts), method: :delete do %>
+	                  <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+	                  <%= @posts.favorites.count %>
+	               <% end %>
+	            </li>
+	        <% else %>
+	            <li style="list-style:none">
+	               <%= link_to post_favorites_path(@posts), method: :post do %>
+	                  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+	                  <%= @posts.favorites.count %>
+	               <% end %>
+	            </li>
+	        <% end %>
+          </div>
+
+		  <div class="right">
+		  	投稿者：
+	        <%= link_to user_path(@posts.user_id) do %>
+			   <%= @posts.user.name %>
+			<% end %>
+			<% if @posts.user == current_user %>
+	           <%= link_to "編集",edit_post_path ,class: 'btn btn-default'%>
+	        <% end %>
+	      </div>
+	   </div>
+	</div>
+
+  </div>
+

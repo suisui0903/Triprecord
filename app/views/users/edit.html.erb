@@ -1,0 +1,28 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-2">
+
+        <h2><span class="bg-info">プロフィール編集画面</span></h2>
+        <%= form_for(@user) do |f| %>
+          <div class="field">
+            <%= f.label :名前 %><br />
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", :size=>"45" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :自己紹介 %><br />
+            <%= f.text_area :introduction, autofocus: true,:size=>"60x10"%>
+          </div>
+          <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+              <%= f.label :アイコン %><br />
+              <%= f.file_field :profile_image, class: "image" %>
+
+          <div class="actions">
+            <%= f.submit "更新" ,class: 'btn btn-info col-md-10' %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+

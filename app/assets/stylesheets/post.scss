@@ -1,0 +1,56 @@
+// Place all the styles related to the Post controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.glyphicon-heart{
+	font-size: 50px;
+}
+.glyphicon-heart-empty{
+	font-size: 50px;
+}
+
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  margin-top: 10px;
+}
+
+.btn-flat-border:hover {
+  background: #67c5ff;
+  color: white;
+}
+
+.glyphicon-map-marker{
+  color: orange;
+}
+
+.glyphicon-time{
+  float: right;
+  font-size: 15px;
+}
+
+.col-md-4{
+  margin-top: 40px;
+}
+
+.right{
+  float: right;
+}
+
+.bottom{
+  padding-top: 100px;
+}
+
+.td{
+  padding: 10px;
+}
+
+.s{
+  width: 600px;
+}
+
